@@ -14,8 +14,8 @@ public class Application {
 
     }
 
-    @Single("first")
-    @Single("second")
+	@Single("first")
+	@Single("second")
     public void multipleExample() {
 
     }

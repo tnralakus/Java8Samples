@@ -17,32 +17,38 @@ import java.util.stream.Stream;
 public class Application {
 
     public static void main(String[] args) {
-        /*CompletableFuture<Void> future1 = CompletableFuture.runAsync(() -> {
+
+		CompletableFuture<Void> future1 = CompletableFuture.runAsync(() -> {
             fetchFromDatabase();
         });
         CompletableFuture<Void> future2 = CompletableFuture.runAsync(() -> {
             readFiles();
         });
 
+		/*
         // FORK JOIN
         future1.join();
         future2.join();
         future1.runAfterBoth(future2, () -> System.out.println("Both DONE"));
-        future1.runAfterEither(future2, () -> System.out.println("Either DONE")); */
+        future1.runAfterEither(future2, () -> System.out.println("Either DONE"));
+		*/
 
 
-        /*CompletableFuture<Void> allOf = CompletableFuture.allOf(future1, future2);
+		/*
+        CompletableFuture<Void> allOf = CompletableFuture.allOf(future1, future2);
         System.out.println("All together");
         allOf.join();
-        System.out.println("DONE.");*/
+        System.out.println("DONE.");
+		*/
 
-        /*CompletableFuture<Object> anyOf = CompletableFuture.anyOf(future1, future2);
+		/*
+		CompletableFuture<Object> anyOf = CompletableFuture.anyOf(future1, future2);
         System.out.println("Any of");
         anyOf.join();
-        System.out.println("DONE.");*/
-
-
-        /*CompletableFuture<List<Path>> future = CompletableFuture.supplyAsync(() -> {
+        System.out.println("DONE.");
+		*/
+		/*
+        CompletableFuture<List<Path>> future = CompletableFuture.supplyAsync(() -> {
             Stream<Path> list = Stream.of();
             try {
                 list = Files.list(Paths.get("."));
@@ -51,10 +57,13 @@ public class Application {
             }
             return list.collect(Collectors.toList());
         });
-
-        List<Path> paths = future.join();
+		List<Path> paths = future.join();
         future.thenAccept((List<Path> pathList) -> {
-        });*/
+			pathList.stream().forEach(p -> System.out.println(p.getFileName()));
+		});
+
+		System.out.println("here i am");
+		*/
 
 
         CompletableFuture.supplyAsync(() -> {

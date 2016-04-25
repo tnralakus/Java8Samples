@@ -47,8 +47,7 @@ public class Application {
         LongStream longOf = LongStream.of(3, 5, Long.MAX_VALUE, 9);
         LongStream longRange = LongStream.range(1, 100);
 
-
-        LongStream range = LongStream.range(1, 10000);
+		LongStream range = LongStream.range(1, 10000);
         range.limit(10).forEach(System.out::println);
 
         IntStream rangeI = IntStream.range(1, 10);
@@ -88,9 +87,9 @@ public class Application {
         System.out.println(sum);
 
         IntStream iStream = IntStream.range(0, 10);
-        iStream.filter(Objects::nonNull); // Lazy
-        iStream.filter(n -> n % 2 == 1); // Lazy
-        iStream.map(n -> n * 2); // Lazy
-        iStream.forEach(System.out::println); // Eager
+		iStream=iStream.filter(Objects::nonNull); // Lazy
+		iStream=iStream.filter(n -> n % 2 == 1); // Lazy
+		iStream=iStream.map(n -> n * 2); // Lazy
+		iStream.forEach(System.out::println); // Eager
     }
 }
