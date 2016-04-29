@@ -18,6 +18,10 @@ public class Application {
 
         List<Integer> numbers = Arrays.asList(5, 10, 1, 5, 6);
         Collections.sort(numbers, Application::sort);
+
+		Converter<String, Integer> converter = Integer::valueOf;
+		Integer converted = converter.convert("123");
+		System.out.println(converted);   // 123
     }
 
     public static void sayHello(String name) {
@@ -31,4 +35,9 @@ public class Application {
     public static Integer sort(Integer number1, Integer number2) {
         return number1 - number2;
     }
+
+	@FunctionalInterface
+	interface Converter<F, T> {
+		T convert(F from);
+	}
 }

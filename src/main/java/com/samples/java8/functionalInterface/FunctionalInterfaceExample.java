@@ -74,11 +74,25 @@ public class FunctionalInterfaceExample {
             printNames(() -> x);
         });
 
+
+		Converter<String, Integer> converter = (from) -> Integer.valueOf(from);
+		Integer converted = converter.convert("123");
+		System.out.println(converted);
+
     }
 
     public static void printNames(Supplier arg) {
         System.out.println(arg.get());
     }
+}
+
+@FunctionalInterface
+interface Converter<F, T> {
+	T convert(F from);
+
+	default String myDefault(){
+		return "myDefault";
+	}
 }
 
 class ListApplication {
